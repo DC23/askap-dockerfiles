@@ -21,3 +21,8 @@ WORKDIR /home/askapuser
 RUN mkdir /home/askapuser/askapsoft
 ADD . /home/askapuser
 VOLUME /home/askapuser/askapsoft
+
+# Update Vim plugins
+ENV TERM xterm
+RUN echo | echo | vim +qall 
+RUN echo | echo | vim +PluginInstall! +qall 
