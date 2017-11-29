@@ -40,6 +40,5 @@ ENV DISPLAY :0
 
 # Update Vim plugins
 ENV TERM xterm
-#RUN echo | echo | vim +qall
-#RUN echo | echo | vim +PluginInstall! +qall
-
+RUN echo | echo | vim +qall
+RUN echo | echo | vim +PluginInstall! +qall
