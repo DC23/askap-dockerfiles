@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     exuberant-ctags \
     flex \
+    fonts-inconsolata \
+    fonts-liberation \
     g++ \
     gcc \
     gcc-4.9-plugin-dev \
@@ -28,6 +30,7 @@ RUN apt-get update && apt-get install -y \
     libatlas-base-dev \
     libatlas-dev \
     libblas-dev \
+    libfreetype6 \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     liblapack-dev \
@@ -40,6 +43,7 @@ RUN apt-get update && apt-get install -y \
     openjdk-7-doc \
     openjdk-7-jdk \
     openmpi-bin \
+    pkg-config \
     python-dev \
     python-gpgme \
     python3-dev \
@@ -48,25 +52,27 @@ RUN apt-get update && apt-get install -y \
     scons \
     subversion \
     sudo \
+    terminator \
     tree \
+    ttf-dejavu \
     unzip \
     vim-gtk \
     virtualenvwrapper
 #&& rm -rf /var/lib/apt/lists/*
 
-# Create the askap user, with sudo permissions
-RUN adduser askapuser
-RUN echo "user ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askapuser && \
-    chmod 0440 /etc/sudoers.d/askapuser
-WORKDIR /home/askapuser
+# Create the askap user, with passwordless sudo permissions
+RUN useradd -G users --create-home --password abc --shell /bin/bash askap
+RUN echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
+    chmod 0440 /etc/sudoers.d/askap
 
-# Set up the home directory and mount point
-ADD . /home/askapuser
-#RUN mkdir /home/askapuser/askapsoft
-RUN chown -R askapuser:askapuser /home/askapuser
-VOLUME /home/askapuser/code
+# Set up the home directory, file ownership, and mount point
+ADD . /home/askap
+RUN chown -R askap:users /home/askap
+VOLUME /home/askap/code
+WORKDIR /home/askap
 
-USER askapuser
+# Run as askap user from here on
+USER askap
 
 # Set the DISPLAY variable so I can run GUI apps inside the container.
 # See: https://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container/25280523#25280523
