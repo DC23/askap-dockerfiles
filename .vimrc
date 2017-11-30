@@ -654,22 +654,13 @@ set t_Co=256
 Plugin 'twerth/ir_black'
 Plugin 'vim-scripts/tir_black'
 Plugin 'vim-scripts/xoria256.vim'
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'morhetz/gruvbox'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'nightsense/office'
-Plugin 'nightsense/carbonized'
-Plugin 'elmindreda/vimcolors'
-Plugin 'hzchirs/vim-material'
-Plugin 'tomasiser/vim-code-dark'
-Plugin 'lifepillar/vim-solarized8'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Language settings for custom file extensions:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.cl set filetype=c
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
