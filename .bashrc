@@ -1,6 +1,11 @@
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
+# fix the default root ownership of the mounted volume
+if [ -d "${HOME}/code" ]; then
+    sudo chown -R askap:users $HOME/code/
+fi
+
 # Set our prompt.
 if [ -f "${HOME}/.bash_prompt" ]; then
     source "${HOME}/.bash_prompt"
