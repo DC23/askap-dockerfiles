@@ -2,8 +2,10 @@
 [ -z "$PS1" ] && return
 
 # fix the default root ownership of the mounted volume
-if [ -d "${HOME}/code" ]; then
+if [ ! -O "${HOME}/code" ]; then
+    echo Fixing code volume ownership ...
     sudo chown -R askap:users $HOME/code/
+    echo Done
 fi
 
 # Set our prompt.
@@ -20,8 +22,7 @@ fi
 HOSTNAME=`hostname`
 export PATH="~/bin:$PATH"
 export GREP_COLOR="1;33"
-EDITOR="vim"
-export EDITOR
+export EDITOR="vim"
 
 # for virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
@@ -82,8 +83,8 @@ export GCC_COLORS=1
 # Alias some programs so that they don't spam a console with warnings that I don't care about
 if command_exists gvim ; then
     alias gvim='gvim 2>/dev/null'
-    alias gvim-update='gvim +PluginClean +PluginInstall! +qall'
-    alias vim-update='vim +PluginClean +PluginInstall! +qall'
+    #alias gvim-update='gvim +PluginClean +PluginInstall! +qall'
+    #alias vim-update='vim +PluginClean +PluginInstall! +qall'
 fi
 
 # if we have the tree command, turn colorisation on

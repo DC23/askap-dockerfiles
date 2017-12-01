@@ -8,8 +8,5 @@ elseif has('win32') || has('win64')
     color default
 else
     set background=dark
-    "color apprentice
-    "color Tomorrow-Night
-    "color office-dark
     color xoria256
 endif

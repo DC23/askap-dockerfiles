@@ -1,5 +1,7 @@
 .git/
 Dockerfile*
 .dockerignore
+.gitignore
 README.md
 askap-docker-run
+Makefile
