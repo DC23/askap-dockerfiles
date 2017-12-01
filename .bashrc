@@ -2,9 +2,9 @@
 [ -z "$PS1" ] && return
 
 # fix the default root ownership of the mounted volume
-if [ ! -O "${HOME}/code" ]; then
+if [ ! -O "${HOME}" ]; then
     echo Fixing code volume ownership ...
-    sudo chown -R askap:users $HOME/code/
+    sudo chown -R askap:users $HOME
     echo Done
 fi
 
