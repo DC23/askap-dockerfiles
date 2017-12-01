@@ -68,7 +68,6 @@ RUN echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
 # Set up the home directory, file ownership, and mount point
 ADD .bash* /home/askap/
 RUN chown -R askap:users /home/askap
-VOLUME /home/askap
 WORKDIR /home/askap
 
 # Run as askap user from here on
