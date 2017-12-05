@@ -12,6 +12,7 @@ docker run \
  --rm \
  --volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH \
  --mount source=$1,target=/home/askap/ \
+ --mount type=bind,source="$HOME/code/askap-builds/",target=/askap-builds/ \
  $1
 
  #--mount type=bind,source="$HOME/.subversion/",target=/home/askap/.subversion/ \
