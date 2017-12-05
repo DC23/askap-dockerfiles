@@ -13,6 +13,10 @@ debian8-base:
 debian8: debian8-base
 	docker build --tag askap-debian8 --file ./Dockerfile-debian8 .
 
+.PHONY: binary
+binary:
+	docker build --tag askap-binary --file ./Dockerfile-debian8-binary .
+
 .PHONY: debian9-base
 debian9-base:
 	docker build --tag askap-debian9-base --file ./Dockerfile-debian9-base .
