@@ -11,9 +11,6 @@ docker run \
  --interactive \
  --rm \
  --volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH \
+ --mount type=bind,source="$HOME/code/askap-builds/",target=/askap-builds/ \
+ --mount source=$1,target=/home/askap/ \
  $1
-
- #--mount source=$1,target=/home/askap/ \
- #--mount type=bind,source="$HOME/code/askap-builds/",target=/askap-builds/ \
- #--mount type=bind,source="$HOME/.subversion/",target=/home/askap/.subversion/ \
- #--mount source=$1-vim,target=/home/askap/.vim/ \
