@@ -1,11 +1,19 @@
 FROM alpine:3.7
 ENV NAME askapsoft
 RUN apk --no-cache --update add \
+    sudo \
     bash \
     bash-completion \
     build-base \
+    python \
+    python-dev \
+    scons \
     subversion \
-    sudo
+    astyle \
+    lapack \
+    freetype \
+    freetype-dev \
+    libpng
 
 # Create the askap user, with passwordless sudo permissions
 #RUN useradd -G users --create-home --password abc --shell /bin/bash askap
@@ -18,5 +26,12 @@ ADD .bash* /home/askap/
 RUN chown -R askap:users /home/askap
 WORKDIR /home/askap
 
+ENTRYPOINT ["/bin/bash"]
+
+RUN apk --no-cache --update add \
+    openblas \ 
+    openblas-dev
+
 # Run as askap user from here on
 USER askap
+

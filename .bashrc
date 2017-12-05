@@ -24,10 +24,6 @@ export PATH="~/bin:$PATH"
 export GREP_COLOR="1;33"
 export EDITOR="vim"
 
-# for virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=~/code
-
 # some aliases
 alias ls='ls --group-directories-first --color=auto'
 alias la='ls -Ah'
@@ -46,8 +42,6 @@ alias free='free -m'
 alias quota='quota -s'
 # Git colorisation escape codes don't work with the pager
 alias git='git --no-pager'
-alias ipyqt='ipython qtconsole --colors=linux --pylab=inline'
-alias ipyqtw='ipython qtconsole --pylab=inline'
 alias gst='git status'
 alias gpr='git pull --rebase'
 alias gc='git commit'
@@ -60,14 +54,6 @@ alias gps='git push'
 # lazy typist shortcuts for initialising the ASKAPsoft environment.
 if [ -f "${HOME}/code/askapsoft/initaskap.sh" ]; then
     alias ia='source ~/code/askapsoft/initaskap.sh'
-    alias cdsms='cd $ASKAP_ROOT/Code/Components/Services/skymodel/service'
-fi
-
-# virtualenv wrapper
-export PROJECT_HOME=$HOME/code
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-if [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
 export HISTCONTROL=ignoreboth:erasedups
@@ -83,8 +69,6 @@ export GCC_COLORS=1
 # Alias some programs so that they don't spam a console with warnings that I don't care about
 if command_exists gvim ; then
     alias gvim='gvim 2>/dev/null'
-    #alias gvim-update='gvim +PluginClean +PluginInstall! +qall'
-    #alias vim-update='vim +PluginClean +PluginInstall! +qall'
 fi
 
 # if we have the tree command, turn colorisation on
