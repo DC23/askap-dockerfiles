@@ -1,6 +1,10 @@
 .PHONY: all
 all: debian8 debian9
 
+.PHONY: alpine
+alpine:
+	docker build --tag askap-alpine --file ./Dockerfile-alpine .
+
 .PHONY: debian8-base
 debian8-base:
 	docker build --tag askap-debian8-base --file ./Dockerfile-debian8-base .
