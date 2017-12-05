@@ -1,5 +1,5 @@
 .PHONY: all
-all: debian8
+all: debian8 debian9
 
 .PHONY: debian8-base
 debian8-base:
