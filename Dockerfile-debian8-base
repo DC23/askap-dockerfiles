@@ -57,8 +57,8 @@ RUN apt-get update && apt-get install -y \
     ttf-dejavu \
     unzip \
     vim-gtk \
-    virtualenvwrapper
-#&& rm -rf /var/lib/apt/lists/*
+    virtualenvwrapper \
+&& rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
 RUN useradd -G users --create-home --password abc --shell /bin/bash askap
@@ -66,7 +66,7 @@ RUN echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
     chmod 0440 /etc/sudoers.d/askap
 
 # Set up the home directory, file ownership, and mount point
-ADD .bash* /home/askap/
+ADD askap-home/.bash* /home/askap/
 RUN chown -R askap:users /home/askap
 WORKDIR /home/askap
 
