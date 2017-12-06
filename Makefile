@@ -7,12 +7,8 @@ all: debian8 debian9
 alpine:
 	docker build --tag askap-alpine:$(VERSION) --file ./Dockerfile-alpine .
 
-.PHONY: debian8-base
-debian8-base:
-	docker build --tag askap-debian8-base:$(VERSION) --file ./Dockerfile-debian8-base .
-
 .PHONY: debian8
-debian8: debian8-base
+debian8:
 	docker build --tag askap-debian8:$(VERSION) --file ./Dockerfile-debian8 .
 
 .PHONY: binary
