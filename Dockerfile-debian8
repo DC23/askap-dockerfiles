@@ -1,4 +1,4 @@
-FROM askap-debian8-base:mpich2
+FROM askap-debian8-base
 
 # Set up the home directory, file ownership, and mount point
 USER root

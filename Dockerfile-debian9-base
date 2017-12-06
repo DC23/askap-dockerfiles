@@ -34,14 +34,14 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     liblapack-dev \
-    libopenmpi-dev \
+    libmpich2-dev \
     libpng-dev \
     libzmq3-dev \
     linux-headers-amd64 \
     meld \
     openjdk-8-doc \
     openjdk-8-jdk \
-    openmpi-bin \
+    mpich2 \
     pkg-config \
     python-dev \
     python-gpgme \
@@ -56,8 +56,7 @@ RUN apt-get update && apt-get install -y \
     ttf-dejavu \
     unzip \
     vim-gtk \
-    virtualenvwrapper
- #&& rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
 RUN useradd -G users --create-home --password abc --shell /bin/bash askap
