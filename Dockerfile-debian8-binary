@@ -1,13 +1,6 @@
-FROM askap-debian8-base
+FROM askap-debian8:latest
 
-# Set up the home directory, file ownership, and mount point
+# Install the ASKAPsoft binaries
 USER root
 ADD ./askapbuild/ /usr/
-RUN chown -R askap:users /home/askap
-
-# Run as askap user from here on
 USER askap
-
-# Set the DISPLAY variable so I can run GUI apps inside the container.
-# See: https://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container/25280523#25280523
-ENV DISPLAY :0

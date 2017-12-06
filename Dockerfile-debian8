@@ -20,13 +20,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     exuberant-ctags \
     flex \
-    fonts-inconsolata \
-    fonts-liberation \
     g++ \
     gcc \
     gcc-4.9-plugin-dev \
     gfortran \
-    git \
     libatlas-base-dev \
     libatlas-dev \
     libblas-dev \
@@ -39,24 +36,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzmq3 \
     libzmq3-dev \
     linux-headers-amd64 \
-    meld \
     openjdk-7-doc \
     openjdk-7-jdk \
     mpich2 \
     pkg-config \
     python-dev \
     python-gpgme \
-    python3-dev \
-    python3-pip \
-    python3-virtualenv \
     scons \
     subversion \
     sudo \
-    terminator \
-    tree \
-    ttf-dejavu \
     unzip \
-    vim-gtk \
 && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions

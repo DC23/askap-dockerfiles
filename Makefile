@@ -22,3 +22,7 @@ debian9-base:
 .PHONY: debian9
 debian9: debian9-base
 	docker build --tag askap-debian9:$(VERSION) --file ./Dockerfile-debian9 .
+
+.PHONY: personal
+personal:
+	docker build --tag askap-personal:$(VERSION) --file ./Dockerfile-personal-dev .
