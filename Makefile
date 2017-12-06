@@ -15,12 +15,8 @@ debian8:
 binary:
 	docker build --tag askap-binary:$(VERSION) --file ./Dockerfile-debian8-binary .
 
-.PHONY: debian9-base
-debian9-base:
-	docker build --tag askap-debian9-base:$(VERSION) --file ./Dockerfile-debian9-base .
-
 .PHONY: debian9
-debian9: debian9-base
+debian9:
 	docker build --tag askap-debian9:$(VERSION) --file ./Dockerfile-debian9 .
 
 .PHONY: personal
