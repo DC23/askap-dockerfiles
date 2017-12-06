@@ -4,13 +4,16 @@ XSOCK=/tmp/.X11-unix
 XAUTH=/tmp/.docker.xauth
 xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
+IMAGE=$1
+VERSION=${2:-latest}
+
 # run the specified image
 docker run \
- --hostname $1 \
+ --hostname $IMAGE \
  --tty \
  --interactive \
  --rm \
  --volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH \
  --mount type=bind,source="$HOME/code/askap-builds/",target=/askap-builds/ \
- --mount source=$1,target=/home/askap/ \
- $1
+ --mount source=$IMAGE,target=/home/askap/ \
+ $IMAGE:$VERSION

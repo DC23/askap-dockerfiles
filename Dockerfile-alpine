@@ -13,10 +13,11 @@ RUN apk --no-cache --update add \
     lapack \
     freetype \
     freetype-dev \
-    libpng
+    libpng \
+    openblas \ 
+    openblas-dev
 
 # Create the askap user, with passwordless sudo permissions
-#RUN useradd -G users --create-home --password abc --shell /bin/bash askap
 RUN adduser -g '' -D askap users
 RUN echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
     chmod 0440 /etc/sudoers.d/askap
@@ -28,10 +29,5 @@ WORKDIR /home/askap
 
 ENTRYPOINT ["/bin/bash"]
 
-RUN apk --no-cache --update add \
-    openblas \ 
-    openblas-dev
-
 # Run as askap user from here on
 USER askap
-

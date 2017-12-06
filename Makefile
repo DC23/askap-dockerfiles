@@ -1,5 +1,10 @@
+VERSION?='latest'
+
 .PHONY: all
 all: debian8 debian9
+
+test:
+	echo $(VERSION)
 
 .PHONY: alpine
 alpine:
@@ -7,11 +12,11 @@ alpine:
 
 .PHONY: debian8-base
 debian8-base:
-	docker build --tag askap-debian8-base --file ./Dockerfile-debian8-base .
+	docker build --tag askap-debian8-base:$(VERSION) --file ./Dockerfile-debian8-base .
 
 .PHONY: debian8
 debian8: debian8-base
-	docker build --tag askap-debian8 --file ./Dockerfile-debian8 .
+	docker build --tag askap-debian8:$(VERSION) --file ./Dockerfile-debian8 .
 
 .PHONY: binary
 binary:
