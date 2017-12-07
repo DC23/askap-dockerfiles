@@ -18,3 +18,7 @@ gui-dev:
 .PHONY: alpine
 alpine:
 	$(MAKE) -C alpine
+
+.PHONY: binary
+binary:
+	$(MAKE) -C binary
