@@ -1,7 +1,7 @@
 export VERSION?='latest'
 
 .PHONY: all
-all: debian8
+all: debian8 debian9 gui-dev
 
 .PHONY: debian8
 debian8:
