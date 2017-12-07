@@ -44,7 +44,7 @@ apt-get update && apt-get install -y --no-install-recommends \
 && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
-RUN useradd -G users --create-home --password abc --shell /bin/bash askap &&
+RUN useradd -G users --create-home --password abc --shell /bin/bash askap && \
     echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
     chmod 0440 /etc/sudoers.d/askap
 
