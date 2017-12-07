@@ -10,7 +10,7 @@ if [[ $1 = 'gui-dev' ]]; then
     XAUTH=/tmp/.docker.xauth
     xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
     XAUTH_ARGS="--volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH"
-    BUILDS_MOUNT="--mount type=bind,source="$HOME/code/askap-builds/",target=/home/askap/askap-builds/"
+    BUILDS_MOUNT="--mount type=bind,source="$ASKAP_RELEASE_DIR",target=/home/askap/askap-builds/"
 fi
 
 # run the specified image
