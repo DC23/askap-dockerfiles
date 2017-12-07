@@ -41,6 +41,8 @@ apt-get update && apt-get install -y --no-install-recommends \
     subversion \
     sudo \
     unzip \
+    vim-nox \
+    nano \
 && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
