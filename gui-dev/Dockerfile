@@ -9,6 +9,7 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     exuberant-ctags \
     gcc-4.9-plugin-dev \
     git \
+    less \
     meld \
     python3 \
     python3-dev \
@@ -17,5 +18,10 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     ttf-dejavu \
     vim-gtk \
     virtualenv \
-    virtualenvwrapper
+    virtualenvwrapper \
+    x11-apps \
+    xterm
 #&& rm -rf /var/lib/apt/lists/*
+
+ADD Xresources /home/askap/.Xresources
+RUN sudo chown askap:askap /home/askap/.Xresources
