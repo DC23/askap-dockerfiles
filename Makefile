@@ -10,3 +10,7 @@ debian8:
 .PHONY: debian9
 debian9:
 	$(MAKE) -C debian9
+
+.PHONY: gui-dev
+gui-dev:
+	$(MAKE) -C gui-dev
