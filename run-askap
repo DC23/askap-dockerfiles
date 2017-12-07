@@ -1,0 +1,21 @@
+#/bin/bash
+# Set up the X11 stuff ...
+#XSOCK=/tmp/.X11-unix
+#XAUTH=/tmp/.docker.xauth
+#xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+IMAGE=askap/$1
+VERSION=${2:-latest}
+VOLUME=askap-$1
+
+# run the specified image
+docker run \
+ --hostname $IMAGE:$VERSION \
+ --tty \
+ --interactive \
+ --rm \
+ --mount source=$VOLUME,target=/home/askap/ \
+ $IMAGE:$VERSION
+
+#--volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH \
+#--mount type=bind,source="$HOME/code/askap-builds/",target=/askap-builds/ \

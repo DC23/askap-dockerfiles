@@ -4,7 +4,7 @@
 # fix the default root ownership of the mounted volume
 if [ ! -O "${HOME}" ]; then
     echo Fixing code volume ownership ...
-    sudo chown -R askap:users $HOME
+    sudo chown -R askap:askap $HOME
     echo Done
 fi
 

@@ -51,7 +51,7 @@ RUN useradd -G users --create-home --password abc --shell /bin/bash askap && \
 
 # Set up the home directory, file ownership, and mount point
 ADD bashrc /home/askap/.bashrc
-RUN chown -R askap:users /home/askap
+RUN chown -R askap:askap /home/askap
 WORKDIR /home/askap
 
 # Run as askap user from here on
