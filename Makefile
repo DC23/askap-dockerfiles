@@ -14,3 +14,7 @@ debian9:
 .PHONY: gui-dev
 gui-dev:
 	$(MAKE) -C gui-dev
+
+.PHONY: alpine
+alpine:
+	$(MAKE) -C alpine

@@ -1,30 +1,30 @@
 FROM alpine:3.7
-ENV NAME askapsoft
 RUN apk --no-cache --update add \
-    sudo \
+    astyle \
     bash \
     bash-completion \
     build-base \
+    freetype \
+    freetype-dev \
+    lapack \
+    libpng \
+    ncurses \
+    openblas \
+    openblas-dev \
     python \
     python-dev \
     scons \
     subversion \
-    astyle \
-    lapack \
-    freetype \
-    freetype-dev \
-    libpng \
-    openblas \ 
-    openblas-dev
+    sudo
 
 # Create the askap user, with passwordless sudo permissions
-RUN adduser -g '' -D askap users
-RUN echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
+RUN adduser -g '' -D askap users && \
+    echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
     chmod 0440 /etc/sudoers.d/askap
 
 # Set up the home directory, file ownership, and mount point
-ADD .bash* /home/askap/
-RUN chown -R askap:users /home/askap
+ADD bashrc /home/askap/.bashrc
+RUN chown -R askap:askap /home/askap
 WORKDIR /home/askap
 
 ENTRYPOINT ["/bin/bash"]
