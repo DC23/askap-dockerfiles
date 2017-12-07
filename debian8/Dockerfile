@@ -10,6 +10,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     ant-optional \
     astyle \
     autoconf \
+    bash-completion \
     bison \
     build-essential \
     bzip2 \
@@ -31,9 +32,9 @@ apt-get update && apt-get install -y --no-install-recommends \
     libzmq3 \
     libzmq3-dev \
     linux-headers-amd64 \
+    mpich2 \
     openjdk-7-doc \
     openjdk-7-jdk \
-    mpich2 \
     pkg-config \
     python-dev \
     python-gpgme \
@@ -41,6 +42,8 @@ apt-get update && apt-get install -y --no-install-recommends \
     subversion \
     sudo \
     unzip \
+    vim-nox \
+    nano \
 && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
@@ -49,13 +52,9 @@ RUN useradd -G users --create-home --password abc --shell /bin/bash askap && \
     chmod 0440 /etc/sudoers.d/askap
 
 # Set up the home directory, file ownership, and mount point
-ADD askap-home/.bash* /home/askap/
-RUN chown -R askap:users /home/askap
+ADD bashrc /home/askap/.bashrc
+RUN chown -R askap:askap /home/askap
 WORKDIR /home/askap
 
 # Run as askap user from here on
 USER askap
-
-# Set the DISPLAY variable so I can run GUI apps inside the container.
-# See: https://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container/25280523#25280523
-ENV DISPLAY :0

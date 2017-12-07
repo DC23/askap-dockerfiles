@@ -1,4 +1,4 @@
-FROM debian:9
+FROM debian:8
 
 # Install system packages
 # This line instructs debconf to store in its database an answer for the program
@@ -10,10 +10,11 @@ apt-get update && apt-get install -y --no-install-recommends \
     ant-optional \
     astyle \
     autoconf \
+    bash-completion \
     bison \
     build-essential \
     bzip2 \
-    clang-format \
+    clang-format-3.5 \
     curl \
     flex \
     g++ \
@@ -26,13 +27,14 @@ apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     liblapack-dev \
-    libmpich-dev \
-    libpng-dev \
+    libmpich2-dev \
+    libpng12-dev \
+    libzmq3 \
     libzmq3-dev \
     linux-headers-amd64 \
-    openjdk-8-doc \
-    openjdk-8-jdk \
-    mpich \
+    mpich2 \
+    openjdk-7-doc \
+    openjdk-7-jdk \
     pkg-config \
     python-dev \
     python-gpgme \
@@ -40,6 +42,8 @@ apt-get update && apt-get install -y --no-install-recommends \
     subversion \
     sudo \
     unzip \
+    vim-nox \
+    nano \
 && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
@@ -48,13 +52,10 @@ RUN useradd -G users --create-home --password abc --shell /bin/bash askap && \
     chmod 0440 /etc/sudoers.d/askap
 
 # Set up the home directory, file ownership, and mount point
-ADD askap-home/.bash* /home/askap/
-RUN chown -R askap:users /home/askap
+ADD bashrc /home/askap/.bashrc
+RUN chown -R askap:askap /home/askap
 WORKDIR /home/askap
 
-# Run as askap user from here on
+# Install the ASKAPsoft binaries
+ADD ./askapbuild/ /usr/
 USER askap
-
-# Set the DISPLAY variable so I can run GUI apps inside the container.
-# See: https://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container/25280523#25280523
-ENV DISPLAY :0

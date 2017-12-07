@@ -1,0 +1,25 @@
+#!/bin/bash
+
+IMAGE=askap/$1
+VERSION=${2:-latest}
+VOLUME=askap-$1
+
+if [[ $1 = 'gui-dev' ]]; then
+    # Set up the X11 stuff ...
+    XSOCK=/tmp/.X11-unix
+    XAUTH=/tmp/.docker.xauth
+    xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+    XAUTH_ARGS="--volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH"
+    BUILDS_MOUNT="--mount type=bind,source="$HOME/code/askap-builds/",target=/home/askap/askap-builds/"
+fi
+
+# run the specified image
+docker run \
+ --hostname $IMAGE:$VERSION \
+ --tty \
+ --interactive \
+ --rm \
+ --mount source=$VOLUME,target=/home/askap/ \
+ $BUILDS_MOUNT \
+ $XAUTH_ARGS \
+ $IMAGE:$VERSION
