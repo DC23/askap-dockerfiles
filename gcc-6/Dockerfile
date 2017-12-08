@@ -9,34 +9,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ant \
     ant-optional \
     astyle \
-    autoconf \
     bash-completion \
     bison \
     build-essential \
-    bzip2 \
     clang-format-3.5 \
-    curl \
     flex \
     libatlas-base-dev \
     libatlas-dev \
     libblas-dev \
-    libfreetype6 \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
     liblapack-dev \
     libopenmpi-dev \
-    libpng12-dev \
     libzmq3 \
     libzmq3-dev \
     linux-headers-amd64 \
     openjdk-7-doc \
     openjdk-7-jdk \
     openmpi-bin \
-    pkg-config \
     python-dev \
     python-gpgme \
     scons \
-    subversion \
     sudo \
     unzip \
     vim-nox \
