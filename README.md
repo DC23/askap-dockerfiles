@@ -5,10 +5,10 @@ with minimal additional configuration.
 Currently working images:
 * binary (Debian 8, gcc 4.9)
 * debian8 (Debian 8, gcc 4.9)
-* debian9 (Debian 9, gcc ??)
+* debian9 (Debian 9, gcc 6.3)
 * gcc-5 (gcc:5 base image (Debian 8), gcc 5.5)
 * gcc-6 (gcc:6 base image (Debian 8), gcc 6.4)
-* gui-dev (Debian 8, gcc 4.9)
+* gui-dev (Debian 9, gcc 6.3)
     * Interactive development environment, with X Window authorisation for running GUI applications inside the container.
 
 Currently broken images:
