@@ -4,13 +4,24 @@ IMAGE=askap/$1
 VERSION=${2:-latest}
 VOLUME=askap-$1-$VERSION
 
+if [[ $1 == *deb8* ]]; then
+    echo 8
+    BUILD_OUTPUT_DIR="$ASKAP_DOCKER_BASE_DIR/binary-deb8/askapbuild"
+fi
+
+
 if [[ $1 == *gui* ]]; then
     # Set up the X11 stuff ...
     XSOCK=/tmp/.X11-unix
     XAUTH=/tmp/.docker.xauth
     xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
     XAUTH_ARGS="--volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH"
-    BUILDS_MOUNT="--mount type=bind,source="$ASKAP_RELEASE_DIR",target=/home/askap/askap-builds/"
+
+    if [[ $2 == *8* ]]; then
+        BUILD_OUTPUT_DIR="$ASKAP_DOCKER_BASE_DIR/binary-deb8/askapbuild"
+    elif [[ $2 == *9* ]]; then
+        BUILD_OUTPUT_DIR="$ASKAP_DOCKER_BASE_DIR/binary-deb9/askapbuild"
+    fi
 fi
 
 # run the specified image
