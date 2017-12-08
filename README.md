@@ -1,9 +1,9 @@
 # Dockerfiles for ASKAPsoft development
-These dockerfiles build images that should be able to compile the ASKAPSOFT code
+These dockerfiles build images that should be able to compile the ASKAPsoft code
 with minimal additional configuration.
 
 Currently working images:
-* binary (Debian 8, gcc 4.9)
+* binary (Debian 9, gcc 6.3)
 * debian8 (Debian 8, gcc 4.9)
 * debian9 (Debian 9, gcc 6.3)
 * gcc-5 (gcc:5 base image (Debian 8), gcc 5.5)

@@ -31,9 +31,9 @@ apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
     libzmq3-dev \
     linux-headers-amd64 \
+    mpich \
     openjdk-8-doc \
     openjdk-8-jdk \
-    mpich \
     pkg-config \
     python-dev \
     python-gpgme \

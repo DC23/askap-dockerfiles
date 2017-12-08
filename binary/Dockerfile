@@ -1,4 +1,4 @@
-FROM debian:8
+FROM debian:9
 
 # Install system packages
 # This line instructs debconf to store in its database an answer for the program
@@ -14,7 +14,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     bison \
     build-essential \
     bzip2 \
-    clang-format-3.5 \
+    clang-format \
     curl \
     flex \
     g++ \
@@ -27,14 +27,13 @@ apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     liblapack-dev \
-    libmpich2-dev \
-    libpng12-dev \
-    libzmq3 \
+    libmpich-dev \
+    libpng-dev \
     libzmq3-dev \
     linux-headers-amd64 \
-    mpich2 \
-    openjdk-7-doc \
-    openjdk-7-jdk \
+    mpich \
+    openjdk-8-doc \
+    openjdk-8-jdk \
     pkg-config \
     python-dev \
     python-gpgme \
