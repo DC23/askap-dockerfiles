@@ -4,23 +4,31 @@ IMAGE=askap/$1
 VERSION=${2:-latest}
 VOLUME=askap-$1-$VERSION
 
-if [[ $1 == *deb8* ]]; then
-    echo 8
-    BUILD_OUTPUT_DIR="$ASKAP_DOCKER_BASE_DIR/binary-deb8/askapbuild"
-fi
-
-
 if [[ $1 == *gui* ]]; then
     # Set up the X11 stuff ...
+    echo Enabling X11 forwarding
     XSOCK=/tmp/.X11-unix
     XAUTH=/tmp/.docker.xauth
     xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
     XAUTH_ARGS="--volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH"
 
+    if [[ ! $ASKAP_DOCKER_BASE_DIR ]]; then
+        echo You must set the ASKAP_DOCKER_BASE_DIR environment variable to the directory containing the docker build files.
+        exit 1
+    fi
+
     if [[ $2 == *8* ]]; then
         BUILD_OUTPUT_DIR="$ASKAP_DOCKER_BASE_DIR/binary-deb8/askapbuild"
     elif [[ $2 == *9* ]]; then
         BUILD_OUTPUT_DIR="$ASKAP_DOCKER_BASE_DIR/binary-deb9/askapbuild"
+    fi
+
+    if [[ $BUILD_OUTPUT_DIR ]]; then
+        BUILDS_MOUNT="--mount type=bind,source="$BUILD_OUTPUT_DIR",target=/home/askap/askap-builds/"
+        if [[ ! -d $BUILD_OUTPUT_DIR ]]; then
+            mkdir $BUILD_OUTPUT_DIR
+        fi
+        echo "Mounting build output directory: container:/home/askap/askap-builds/ --> host:$BUILD_OUTPUT_DIR"
     fi
 fi
 

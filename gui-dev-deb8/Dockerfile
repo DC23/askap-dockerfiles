@@ -1,4 +1,4 @@
-FROM askap/debian8:latest
+FROM askap/debian:8
 
 # Set the DISPLAY variable so I can run GUI apps inside the container.
 # See: https://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container/25280523#25280523

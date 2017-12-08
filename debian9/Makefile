@@ -1,3 +1,3 @@
 .PHONY: all
 all:
-	docker build --tag askap/debian9:$(VERSION) .
+	docker build --tag askap/debian:9 .
