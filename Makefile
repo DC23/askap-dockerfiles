@@ -1,8 +1,5 @@
 export VERSION?='latest'
 
-.PHONY: all
-all: debian8 debian9 gui-dev
-
 .PHONY: debian8
 debian8:
 	$(MAKE) -C debian8
@@ -12,11 +9,11 @@ debian9:
 	$(MAKE) -C debian9
 
 .PHONY: gui-dev-deb8
-gui-dev-deb8:
+gui-dev-deb8: debian8
 	$(MAKE) -C gui-dev-deb8
 
 .PHONY: gui-dev-deb9
-gui-dev-deb9:
+gui-dev-deb9: debian9
 	$(MAKE) -C gui-dev-deb9
 
 .PHONY: alpine

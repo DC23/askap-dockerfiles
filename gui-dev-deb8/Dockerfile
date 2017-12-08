@@ -1,4 +1,4 @@
-FROM askap/debian9:latest
+FROM askap/debian8:latest
 
 # Set the DISPLAY variable so I can run GUI apps inside the container.
 # See: https://stackoverflow.com/questions/16296753/can-you-run-gui-apps-in-a-docker-container/25280523#25280523
@@ -7,7 +7,7 @@ ENV DISPLAY :0
 # Install additional system packages
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     exuberant-ctags \
-    gcc-6-plugin-dev \
+    gcc-4.9-plugin-dev \
     git \
     less \
     meld \
