@@ -16,6 +16,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     bzip2 \
     clang-format-3.5 \
     curl \
+    file \
     flex \
     g++ \
     gcc \

@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bison \
     build-essential \
     clang-format-3.5 \
+    file \
     flex \
     libatlas-base-dev \
     libatlas-dev \
