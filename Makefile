@@ -22,3 +22,15 @@ alpine:
 .PHONY: binary
 binary:
 	$(MAKE) -C binary
+
+.PHONY: gcc5
+gcc5:
+	$(MAKE) -C gcc5
+
+.PHONY: gcc6
+gcc6:
+	$(MAKE) -C gcc6
+
+.PHONY: gcc7
+gcc7:
+	$(MAKE) -C gcc7

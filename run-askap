@@ -4,7 +4,7 @@ IMAGE=askap/$1
 VERSION=${2:-latest}
 VOLUME=askap-$1
 
-if [[ $1 = 'gui-dev' ]]; then
+if [[ $1 == *gui* ]]; then
     # Set up the X11 stuff ...
     XSOCK=/tmp/.X11-unix
     XAUTH=/tmp/.docker.xauth
