@@ -27,5 +27,3 @@ ADD Xresources /home/askap/.Xresources
 RUN sudo chown askap:askap /home/askap/.Xresources && \
     mkdir /home/askap/askap-builds && \
     sudo chown askap:askap /home/askap/askap-builds
-
-

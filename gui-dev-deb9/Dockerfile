@@ -24,4 +24,6 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
 #&& rm -rf /var/lib/apt/lists/*
 
 ADD Xresources /home/askap/.Xresources
-RUN sudo chown askap:askap /home/askap/.Xresources
+RUN sudo chown askap:askap /home/askap/.Xresources && \
+    mkdir /home/askap/askap-builds && \
+    sudo chown askap:askap /home/askap/askap-builds
