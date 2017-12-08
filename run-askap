@@ -2,7 +2,7 @@
 
 IMAGE=askap/$1
 VERSION=${2:-latest}
-VOLUME=askap-$1
+VOLUME=askap-$1-$VERSION
 
 if [[ $1 == *gui* ]]; then
     # Set up the X11 stuff ...
