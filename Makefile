@@ -24,9 +24,13 @@ arch:
 alpine:
 	$(MAKE) -C alpine
 
-.PHONY: binary
-binary:
-	$(MAKE) -C binary
+.PHONY: binary8
+binary8:
+	$(MAKE) -C binary-deb8
+
+.PHONY: binary9
+binary9:
+	$(MAKE) -C binary-deb9
 
 .PHONY: gcc5
 gcc5:
@@ -39,3 +43,5 @@ gcc6:
 .PHONY: gcc7
 gcc7:
 	$(MAKE) -C gcc-7
+
+all: debian8 debian9 gui-dev-deb8 gui-dev-deb9 arch binary8 binary9 gcc5 gcc6 gcc7
