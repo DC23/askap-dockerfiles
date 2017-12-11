@@ -21,11 +21,14 @@ RUN pacman -Su --noconfirm
 RUN pacman-db-upgrade
 
 # Generate locales
+# The final line is required as some ASKAP packages expect to find xlocale.h
+# while Arch installs that header as locale.h
 ENV LANG=en_AU.UTF-8
 RUN echo "en_AU.UTF-8 UTF-8" >  /etc/locale.gen \
  && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
  && locale-gen \
- && echo "LANG=en_AU.UTF-8" >> /etc/locale.conf
+ && echo "LANG=en_AU.UTF-8" >> /etc/locale.conf \
+ && ln -s /usr/include/locale.h /usr/include/xlocale.h
 
 # Install extra packages
 RUN pacman --needed --noconfirm -S \
@@ -46,7 +49,8 @@ RUN pacman --needed --noconfirm -S \
     sudo \
     tree \
     vim
-#RUN pacman --needed --noconfirm -S \
+RUN pacman --needed --noconfirm -S \
+    gcc-fortran
 
 # Remove orphaned packages
 #RUN if [ ! -z "$(pacman -Qtdq)" ]; then \

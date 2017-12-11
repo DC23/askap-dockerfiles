@@ -16,6 +16,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     bzip2 \
     clang-format \
     curl \
+    file \
     flex \
     g++ \
     gcc \
@@ -29,6 +30,9 @@ apt-get update && apt-get install -y --no-install-recommends \
     liblapack-dev \
     libmpich-dev \
     libpng-dev \
+    libreadline-dev \
+    libsofa1 \
+    libsofa1-dev \
     libzmq3-dev \
     linux-headers-amd64 \
     mpich \
