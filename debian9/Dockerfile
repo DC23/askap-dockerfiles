@@ -40,7 +40,6 @@ apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     python-dev \
     python-gpgme \
-    scons \
     subversion \
     sudo \
     unzip \

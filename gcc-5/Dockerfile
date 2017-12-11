@@ -19,7 +19,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libatlas-dev \
     libblas-dev \
     liblapack-dev \
+    libncurses5-dev \
     libopenmpi-dev \
+    libreadline-dev \
     libzmq3 \
     libzmq3-dev \
     linux-headers-amd64 \

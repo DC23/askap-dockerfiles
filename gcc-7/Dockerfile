@@ -4,10 +4,8 @@ FROM gcc:7
 # This line instructs debconf to store in its database an answer for the program
 # debconf. If (the running program) debconf later asks (the database of answers)
 # debconf what is my frontend the answer will be frontend is Noninteractive
-RUN apt-get update \
-&& echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
-&& apt-get install -y --no-install-recommends apt-utils \
-&& apt-get install -y --no-install-recommends \
+#RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     ant \
     ant-optional \
     astyle \
@@ -17,12 +15,13 @@ RUN apt-get update \
     clang-format \
     file \
     flex \
-    gfortran \
     libatlas-base-dev \
     libatlas-dev \
     libblas-dev \
     liblapack-dev \
+    libncurses5-dev \
     libopenmpi-dev \
+    libreadline-dev \
     libzmq3-dev \
     linux-headers-amd64 \
     openjdk-8-doc \

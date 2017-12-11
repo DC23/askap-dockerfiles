@@ -29,7 +29,9 @@ apt-get update && apt-get install -y --no-install-recommends \
     libjpeg62-turbo-dev \
     liblapack-dev \
     libmpich2-dev \
+    libncurses5-dev \
     libpng12-dev \
+    libreadline-dev \
     libzmq3 \
     libzmq3-dev \
     linux-headers-amd64 \
