@@ -21,6 +21,7 @@ alias egrep='grep -E --color=auto'
 alias fgrep='grep -F --color=auto'
 alias free='free -m'
 alias git='git --no-pager'
+alias pacman="pacman --color=always"
 
 export HISTCONTROL=ignoreboth:erasedups
 export CC=gcc

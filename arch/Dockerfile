@@ -31,10 +31,22 @@ RUN echo "en_AU.UTF-8 UTF-8" >  /etc/locale.gen \
 RUN pacman --needed --noconfirm -S \
     base-devel \
     ctags \
+    freetype2 \
     git \
+    java-environment-common \
+    java-runtime-common \
+    jdk9-openjdk \
+    jre9-openjdk \
+    jre9-openjdk-headless \
+    libjpeg-turbo \
+    libpng \
+    linux-api-headers \
+    python2 \
     subversion \
     sudo \
-    tree
+    tree \
+    vim
+#RUN pacman --needed --noconfirm -S \
 
 # Remove orphaned packages
 #RUN if [ ! -z "$(pacman -Qtdq)" ]; then \
