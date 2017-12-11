@@ -44,4 +44,4 @@ gcc6:
 gcc7:
 	$(MAKE) -C gcc-7
 
-all: debian8 debian9 gui-dev-deb8 gui-dev-deb9 arch binary8 binary9 gcc5 gcc6 gcc7
+all: debian8 debian9 gui-dev-deb8 gui-dev-deb9 arch binary8 binary9 gcc5 gcc6
