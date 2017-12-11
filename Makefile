@@ -16,6 +16,10 @@ gui-dev-deb8: debian8
 gui-dev-deb9: debian9
 	$(MAKE) -C gui-dev-deb9
 
+.PHONY: arch
+arch:
+	$(MAKE) -C arch
+
 .PHONY: alpine
 alpine:
 	$(MAKE) -C alpine
