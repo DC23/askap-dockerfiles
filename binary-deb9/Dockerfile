@@ -29,10 +29,10 @@ apt-get update && apt-get install -y --no-install-recommends \
     libjpeg62-turbo-dev \
     liblapack-dev \
     libmpich-dev \
+    libncurses5-dev \
     libpng-dev \
     libreadline-dev \
-    libsofa1 \
-    libsofa1-dev \
+    libreadline7 \
     libzmq3-dev \
     linux-headers-amd64 \
     mpich \
@@ -41,7 +41,6 @@ apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     python-dev \
     python-gpgme \
-    scons \
     subversion \
     sudo \
     unzip \
@@ -50,9 +49,12 @@ apt-get update && apt-get install -y --no-install-recommends \
 && rm -rf /var/lib/apt/lists/*
 
 # Create the askap user, with passwordless sudo permissions
+# Also enable bash completion for all users in the same RUN to avoid an extra
+# layer
 RUN useradd -G users --create-home --password abc --shell /bin/bash askap && \
     echo "askap ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/askap && \
-    chmod 0440 /etc/sudoers.d/askap
+    chmod 0440 /etc/sudoers.d/askap && \
+    echo '. /etc/bash_completion' >> /etc/profile
 
 # Set up the home directory, file ownership, and mount point
 ADD bashrc /home/askap/.bashrc
