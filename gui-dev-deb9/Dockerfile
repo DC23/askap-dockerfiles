@@ -12,6 +12,7 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     less \
     libreoffice-calc \
     meld \
+    odb \
     python3 \
     python3-dev \
     python3-pandas \
