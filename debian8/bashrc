@@ -24,6 +24,3 @@ alias git='git --no-pager'
 
 export HISTCONTROL=ignoreboth:erasedups
 export CC=gcc
-
-# Use bash-completion, if available. This is not enabled by default on LMDE or Debian.
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion

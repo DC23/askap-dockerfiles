@@ -6,8 +6,6 @@ FROM debian:9
 # debconf what is my frontend the answer will be frontend is Noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
 apt-get update && apt-get install -y --no-install-recommends \
-    ant \
-    ant-optional \
     astyle \
     autoconf \
     bash-completion \
@@ -36,7 +34,6 @@ apt-get update && apt-get install -y --no-install-recommends \
     libzmq3-dev \
     linux-headers-amd64 \
     mpich \
-    openjdk-8-doc \
     openjdk-8-jdk \
     pkg-config \
     python-dev \
