@@ -36,6 +36,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     mpich \
     openjdk-8-jdk \
     pkg-config \
+    procps \
     python-dev \
     python-gpgme \
     subversion \

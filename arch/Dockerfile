@@ -38,9 +38,8 @@ RUN pacman --needed --noconfirm -S \
     git \
     java-environment-common \
     java-runtime-common \
-    jdk9-openjdk \
-    jre9-openjdk \
-    jre9-openjdk-headless \
+    jdk7-openjdk \
+    jre7-openjdk \
     libjpeg-turbo \
     libpng \
     linux-api-headers \
