@@ -11,8 +11,9 @@ ENV DISPLAY :0
 RUN pacman --noconfirm -Syyu \
  && pacman-db-upgrade \
  && pacman --noconfirm -S reflector rsync \
- && reflector -l 200 -p https --sort rate --save /etc/pacman.d/mirrorlist \
- && pacman -Rsn --noconfirm reflector rsync
+ && reflector -l 200 -p https --sort rate --save /etc/pacman.d/mirrorlist
+ #&& reflector -l 200 -p https --country 'Australia' --sort rate --save /etc/pacman.d/mirrorlist
+ #&& pacman -Rsn --noconfirm reflector rsync
 
 # Update system
 RUN pacman -Su --noconfirm
@@ -35,6 +36,7 @@ RUN pacman --needed --noconfirm -S \
     base-devel \
     ctags \
     freetype2 \
+    gcc-fortran \
     git \
     java-environment-common \
     java-runtime-common \
@@ -43,24 +45,23 @@ RUN pacman --needed --noconfirm -S \
     libjpeg-turbo \
     libpng \
     linux-api-headers \
+    openmpi \
     python2 \
     subversion \
     sudo \
     tree \
     vim
-RUN pacman --needed --noconfirm -S \
-    gcc-fortran
 
 # Remove orphaned packages
-#RUN if [ ! -z "$(pacman -Qtdq)" ]; then \
-      #pacman --noconfirm -Rns $(pacman -Qtdq); \
-    #fi
+RUN if [ ! -z "$(pacman -Qtdq)" ]; then \
+      pacman --noconfirm -Rns $(pacman -Qtdq); \
+    fi
 
 # Clear pacman caches
 #RUN yes | pacman --noconfirm -Scc
 
 # Optimise pacman database
-#RUN pacman-optimize --nocolor
+RUN pacman-optimize --nocolor
 
 # Housekeeping
 RUN rm -f /etc/pacman.d/mirrorlist.pacnew \
