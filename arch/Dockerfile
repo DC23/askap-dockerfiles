@@ -33,6 +33,7 @@ RUN echo "en_AU.UTF-8 UTF-8" >  /etc/locale.gen \
 
 # Install extra packages
 RUN pacman --needed --noconfirm -S \
+    bash-completion \
     base-devel \
     ctags \
     freetype2 \
