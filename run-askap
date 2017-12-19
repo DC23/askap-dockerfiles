@@ -34,7 +34,7 @@ fi
 
 # run the specified image
 docker run \
- --hostname $IMAGE:$VERSION \
+ --hostname $IMAGE-$VERSION \
  --tty \
  --interactive \
  --rm \
