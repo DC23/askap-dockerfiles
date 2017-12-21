@@ -59,10 +59,7 @@ RUN if [ ! -z "$(pacman -Qtdq)" ]; then \
     fi
 
 # Clear pacman caches
-#RUN yes | pacman --noconfirm -Scc
-
-# Optimise pacman database
-RUN pacman-optimize --nocolor
+RUN yes | pacman --noconfirm -Scc
 
 # Housekeeping
 RUN rm -f /etc/pacman.d/mirrorlist.pacnew \
