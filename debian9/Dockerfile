@@ -33,6 +33,8 @@ apt-get update && apt-get install -y --no-install-recommends \
     libreadline7 \
     libzmq3-dev \
     linux-headers-amd64 \
+    locales \
+    locales-all \
     mpich \
     openjdk-8-jdk \
     pkg-config \
@@ -45,6 +47,12 @@ apt-get update && apt-get install -y --no-install-recommends \
     vim-nox \
     nano \
 && rm -rf /var/lib/apt/lists/*
+
+# Set locale to en_US.UTF-8
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
 
 # Create the askap user, with passwordless sudo permissions
 # Also enable bash completion for all users in the same RUN to avoid an extra
