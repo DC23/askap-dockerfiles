@@ -10,6 +10,7 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     gcc-4.9-plugin-dev \
     git \
     less \
+    libreoffice-calc \
     meld \
     python3 \
     python3-dev \
