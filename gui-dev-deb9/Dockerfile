@@ -10,6 +10,7 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     gcc-6-plugin-dev \
     git \
     less \
+    libgl1-mesa-dri \
     libreoffice-calc \
     meld \
     odb \
@@ -18,6 +19,7 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     python3-pandas \
     python3-pip \
     python3-xlrd \
+    sqlitebrowser \
     tree \
     ttf-dejavu \
     vim-gtk \
