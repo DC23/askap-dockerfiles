@@ -7,6 +7,7 @@ ENV DISPLAY :0
 # Install additional system packages
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     exuberant-ctags \
+    fonts-powerline \
     gcc-6-plugin-dev \
     git \
     less \
