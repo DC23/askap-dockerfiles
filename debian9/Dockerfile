@@ -6,27 +6,27 @@ FROM debian:9
 # debconf what is my frontend the answer will be frontend is Noninteractive
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
 apt-get update && apt-get install -y --no-install-recommends \
-    astyle \
+    #astyle \
     #autoconf \
     bash-completion \
     #bison \
     build-essential \
-    bzip2 \
+    #bzip2 \
     #clang-format \
-    curl \
+    #curl \
     #file \
     #flex \
     #g++ \
-    git \
+    #git \
     #gcc \
     #gfortran \
-    less \
+    #less \
     #libatlas-base-dev \
     #libatlas-dev \
     #libblas-dev \
     #libfreetype6 \
     #libfreetype6-dev \
-    libgl1-mesa-dri \
+    #libgl1-mesa-dri \
     #libjpeg62-turbo-dev \
     #liblapack-dev \
     #libmpich-dev \
@@ -43,15 +43,20 @@ apt-get update && apt-get install -y --no-install-recommends \
     #pkg-config \
     #procps \
     #python-dev \
+    python \
     python3 \
     python3-dev \
+    python3-numpy \
     python3-pandas \
     python3-pip \
+    python3-setuptools \
     python3-xlrd \
-    subversion \
+    #subversion \
     sudo \
-    unzip \
-    vim-nox
+    #unzip \
+    #vim-gtk \
+    vim-nox \
+    xdot
 #&& rm -rf /var/lib/apt/lists/*
 
 # Set the DISPLAY variable so I can run GUI apps inside the container.
@@ -63,6 +68,8 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
+
+RUN pip3 install gprof2dot
 
 # Create a user, with passwordless sudo permissions
 # Also enable bash completion for all users in the same RUN to avoid an extra

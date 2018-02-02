@@ -7,9 +7,7 @@ XAUTH=/tmp/.docker.xauth
 xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 XAUTH_ARGS="--volume $XSOCK:$XSOCK -v $XAUTH:$XAUTH -e XAUTHORITY=$XAUTH"
 
-# Either pass the right directory as an arg, or edit the default here
-HOST_CODE_DIRECTORY=${1:"/home/daniel/code"}
-SOURCE_CODE_MOUNT="--mount type=bind,source="$HOST_CODE_DIRECTORY",target=/home/user/code/"
+SOURCE_CODE_MOUNT="--mount type=bind,source=/home/daniel/code/python-profiling/,target=/home/user/code/"
 
 # run the specified image
 docker run \
