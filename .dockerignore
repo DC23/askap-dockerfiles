@@ -1,7 +1,6 @@
 .git/
-Dockerfile*
 .dockerignore
 .gitignore
-README.md
-askap-docker-run
+Dockerfile
 Makefile
+run-xdot
